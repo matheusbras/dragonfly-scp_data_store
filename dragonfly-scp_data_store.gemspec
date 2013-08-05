@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'net-ssh', '2.6.8'
   spec.add_dependency 'net-scp', '1.1.2'
   spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "activesupport", "4.0.0"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", '>= 2.6.0'
 end
