@@ -1,4 +1,4 @@
-Copyright (c) 2013 Matheus Bras
+Copyright (c) 2013 Thiago Belem, Matheus Bras
 
 MIT License
 

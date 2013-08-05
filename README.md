@@ -1,10 +1,10 @@
 # Dragonfly::ScpDataStore
 
-TODO: Write a gem description
+A dragonfly datastore adaptar for saving your files on remote servers using Net::SCP and Net::SSH.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Drop this line to your application's Gemfile:
 
     gem 'dragonfly-scp_data_store'
 
@@ -18,7 +18,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+On your dragonfly initializer:
+
+```ruby
+  app.configure do |c|
+    c.datastore = Dragonfly::ScpDataStore::DataStore.new(
+      host: ENV['CDN_SSH_HOST'], # This should be the host address of your remote server
+      username: ENV['CDN_SSH_USERNAME'], # The username of your server
+      password: ENV['CDN_SSH_PASSWORD'], # The password
+      folder: ENV['CDN_FOLDER'], # The folder in which you're going to store your files
+      base_url: ENV['CDN_BASE_URL'], # The url which you're going to retrieve your files from the server
+    )
+  end
+```
 
 ## Contributing
 
