@@ -6,6 +6,8 @@ require 'net/scp'
 
 module Dragonfly
   module ScpDataStore
+    class DataNotFound < RuntimeError; end
+
     class DataStore
       include ::Dragonfly::Configurable
 

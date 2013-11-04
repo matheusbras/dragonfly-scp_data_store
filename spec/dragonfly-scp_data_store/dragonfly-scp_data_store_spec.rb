@@ -45,6 +45,27 @@ describe Dragonfly::ScpDataStore::DataStore do
 
   end
 
+  describe "#retrieve" do
+    let(:data_store) do
+      Dragonfly::ScpDataStore::DataStore.new(
+        host: "localhost",
+        username: "root",
+        password: "password",
+        folder: "../fixtures/images",
+        base_url: "http://localhost:3000/images",
+      )
+    end
+
+    context :failure do
+      it "returns an uid unique uid" do
+        expect {
+          data_store.retrieve('missing.jpg')
+        }.to raise_error(Dragonfly::ScpDataStore::DataNotFound)
+      end
+    end
+
+  end
+
   describe "#destroy" do
     let(:data_store) do
       Dragonfly::ScpDataStore::DataStore.new(
