@@ -43,7 +43,7 @@ module Dragonfly
       end
 
       def destroy(uid)
-        raise DataNotFound
+        true
       end
 
       private
