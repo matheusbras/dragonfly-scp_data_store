@@ -12,7 +12,7 @@ describe Dragonfly::ScpDataStore::DataStore do
         folder: "images",
         base_url: "localhost:3000/images",
       )
-    end 
+    end
 
     it { data_store.host.should eq("localhost") }
     it { data_store.username.should eq("root") }
@@ -41,6 +41,44 @@ describe Dragonfly::ScpDataStore::DataStore do
 
     it "returns an uid unique uid" do
       data_store.store(temp_object).should_not eq(data_store.store(temp_object))
+    end
+
+  end
+
+  describe "#retrieve" do
+    let(:data_store) do
+      Dragonfly::ScpDataStore::DataStore.new(
+        host: "localhost",
+        username: "root",
+        password: "password",
+        folder: "../fixtures/images",
+        base_url: "http://localhost:3000/images",
+      )
+    end
+
+    context :failure do
+      it "returns an uid unique uid" do
+        expect {
+          data_store.retrieve('missing.jpg')
+        }.to raise_error(Dragonfly::ScpDataStore::DataNotFound)
+      end
+    end
+
+  end
+
+  describe "#destroy" do
+    let(:data_store) do
+      Dragonfly::ScpDataStore::DataStore.new(
+        host: "localhost",
+        username: "root",
+        password: "password",
+        folder: "../fixtures/images",
+        base_url: "localhost:3000/images",
+      )
+    end
+
+    it "returns true" do
+      data_store.destroy('any_uid').should be_true
     end
 
   end
